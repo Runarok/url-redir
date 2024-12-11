@@ -5,27 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Redirector</title>
     <script>
-        // Define a mapping of hash fragments to target URLs
-        const redirects = {
-            'Uhyss': 'https://github.com/TempestAethel/Design-and-implementation-of-Antenna',
-            // You can add more hashes and their target URLs here
-            // 'AnotherPath': 'https://example.com',
-        };
+        // Fetch the redirect rules from the JSON file
+        async function fetchRedirects() {
+            const response = await fetch('redirects.json');
+            const redirects = await response.json();
+            handleRedirect(redirects);
+        }
 
         // Function to handle the redirection based on the URL hash
-        function handleRedirect() {
+        function handleRedirect(redirects) {
             const hash = window.location.hash.substring(1); // Remove the '#' from the hash
+
             if (redirects[hash]) {
-                // If a matching redirect is found, perform the redirection
-                window.location.href = redirects[hash];
+                const redirect = redirects[hash];
+                if (redirect.showPopup) {
+                    // Show popup if the redirect has popup enabled
+                    showPopup(redirect);
+                } else {
+                    // Redirect immediately if no popup is needed
+                    window.location.href = redirect.url;
+                }
             } else {
-                // If no redirect found, display a message or fallback behavior
+                // Display message if no redirect is found
                 document.getElementById('message').innerText = `No redirect found for hash: ${hash}`;
             }
         }
 
-        // Call the redirect function when the page loads
-        window.onload = handleRedirect;
+        // Function to show the popup
+        function showPopup(redirect) {
+            const userConfirmed = confirm(`Do you want to redirect to ${redirect.url}?`);
+            if (userConfirmed) {
+                window.location.href = redirect.url;
+            } else {
+                document.getElementById('message').innerText = `Redirect to ${redirect.url} was canceled.`;
+            }
+        }
+
+        // Call the function to fetch the redirects and process
+        window.onload = fetchRedirects;
     </script>
 </head>
 <body>
