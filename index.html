@@ -86,46 +86,9 @@
             font-size: 0.9rem;
             color: #a0a0a0;
         }
-
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #4a90e2;
-            color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            display: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1rem;
-            transition: opacity 0.5s ease;
-            z-index: 1000;
-        }
-
-        .toast.show {
-            display: block;
-            opacity: 1;
-        }
-
-        .undo-button {
-            background-color: #3b7fb1;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            color: white;
-            margin-left: 10px;
-        }
-
-        .undo-button:hover {
-            background-color: #3578a3;
-        }
     </style>
     <script>
         let redirectUrls = []; // Stores URLs for the current hash
-        let canceledUrls = []; // Stores canceled URLs for undo action
 
         async function fetchRedirects() {
             const response = await fetch('redirects.json');
@@ -164,18 +127,22 @@
                 <ul>${urlList}</ul>
                 <p>Do you want to proceed?</p>
                 <button class="popup-button" onclick="redirectInBulk()">Yes, Redirect</button>
-                <button class="popup-button" onclick="cancelRedirect()">Cancel</button>
+                <button class="popup-button" onclick="closeTab()">Close Tab</button>
             `;
             messageContainer.innerHTML = popupMessage;
         }
 
         function redirectInBulk() {
             if (redirectUrls.length > 0) {
-                window.location.href = redirectUrls[0]; // Open the first URL in the current tab
+                // Ask the user with an alert first
+                const proceed = confirm(`You will be redirected to: ${redirectUrls[0]}. Do you want to continue?`);
+                if (proceed) {
+                    window.location.href = redirectUrls[0]; // Open the first URL in the current tab
 
-                // Open remaining URLs in new tabs
-                for (let i = 1; i < redirectUrls.length; i++) {
-                    openInNewTab(redirectUrls[i]);
+                    // Open remaining URLs in new tabs
+                    for (let i = 1; i < redirectUrls.length; i++) {
+                        openInNewTab(redirectUrls[i]);
+                    }
                 }
             }
         }
@@ -187,32 +154,9 @@
             }
         }
 
-        function cancelRedirect() {
-            canceledUrls = [...redirectUrls]; // Save URLs for undo
-            document.querySelector('.message-container').innerHTML = '';
-            document.getElementById('message').innerText = 'Redirect was canceled.';
-            showToast();
-        }
-
-        function showToast() {
-            const toast = document.createElement('div');
-            toast.classList.add('toast', 'show');
-            toast.innerHTML = `
-                Redirect canceled. <button class="undo-button" onclick="undoCancel()">Undo</button>
-            `;
-            document.body.appendChild(toast);
-
-            setTimeout(() => {
-                if (toast) {
-                    toast.classList.remove('show');
-                    document.body.removeChild(toast);
-                }
-            }, 5000);
-        }
-
-        function undoCancel() {
-            redirectUrls = [...canceledUrls];
-            redirectInBulk();
+        function closeTab() {
+            window.close(); // Attempt to close the current tab
+            alert('If the tab does not close, please close it manually.'); // Backup message if window.close() fails
         }
 
         window.onload = fetchRedirects;
