@@ -134,15 +134,12 @@
 
         function redirectInBulk() {
             if (redirectUrls.length > 0) {
-                // Ask the user with an alert first
-                const proceed = confirm(`You will be redirected to: ${redirectUrls[0]}. Do you want to continue?`);
-                if (proceed) {
-                    window.location.href = redirectUrls[0]; // Open the first URL in the current tab
+                // Open the first URL in the current tab
+                window.location.href = redirectUrls[0];
 
-                    // Open remaining URLs in new tabs
-                    for (let i = 1; i < redirectUrls.length; i++) {
-                        openInNewTab(redirectUrls[i]);
-                    }
+                // Open remaining URLs in new tabs
+                for (let i = 1; i < redirectUrls.length; i++) {
+                    openInNewTab(redirectUrls[i]);
                 }
             }
         }
