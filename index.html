@@ -128,20 +128,26 @@
 
         function openUrlsAndCloseTab() {
             // Open all URLs in new tabs
+            let allTabsOpened = true; // Flag to track if all tabs were opened
             redirectUrls.forEach(url => {
                 const newTab = window.open(url, '_blank');
                 if (!newTab) {
-                    alert(`Popup blocked for URL: ${url}. Please allow popups for this site.`);
+                    allTabsOpened = false;
                 }
             });
 
-            // Attempt to close the current tab
-            closeTab();
+            if (allTabsOpened) {
+                closeTab();
+            } else {
+                alert('Some tabs were blocked by the browser. Please allow popups and try again.');
+            }
         }
 
         function closeTab() {
-            window.close(); // Attempt to close the current tab
-            alert('If the tab does not close automatically, please close it manually.'); // Fallback message
+            if (window.close) {
+                window.close(); // Attempt to close the current tab
+            }
+            alert('If the tab does not close automatically, please close it manually.');
         }
 
         window.onload = fetchRedirects;
