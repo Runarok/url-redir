@@ -8,9 +8,10 @@ A simple and customizable URL redirector that can be hosted on GitHub Pages. Thi
 
 - **Dynamic Redirection**: Redirect users to custom URLs based on the hash in the URL.
 - **Popup Confirmation**: Optionally show a confirmation popup before redirecting users.
-- **Cancel and Undo**: Allow users to cancel the redirect, with the option to undo the cancellation and proceed with the redirection.
+- **Background Opening for Bulk URLs**: Open multiple URLs in the background, with the last URL loaded into the current tab.
 - **Customizable Redirect Rules**: Easily add, remove, or modify redirect rules in a separate JSON file.
 - **Responsive and Dark-Themed UI**: A clean, user-friendly interface with a modern dark theme.
+- **Toast Notifications**: Non-intrusive feedback for actions, such as URLs being opened.
 
 ---
 
@@ -18,13 +19,15 @@ A simple and customizable URL redirector that can be hosted on GitHub Pages. Thi
 
 1. **Redirection Based on URL Hash**: 
    - When a user visits `https://your-site-url.com/#<hash>`, the application checks the URL fragment (`<hash>`).
-   - If a matching redirect rule is found in the `redirects.json` file, the user is either redirected immediately or prompted with a confirmation popup.
+   - If a matching redirect rule is found in the `redirects.json` file, the user is redirected accordingly.
 
 2. **Popup Confirmation**: 
-   - If configured in the `redirects.json` file, a popup appears with a message asking if the user wants to proceed to the redirect URL. The user can either click **Yes, Redirect** or **Cancel**.
-   - If canceled, a toast notification will appear with an **Undo** button. Clicking **Undo** takes the user back to the original redirect location.
+   - If configured in the `redirects.json` file, a popup appears asking if the user wants to proceed to the redirect URL. The user can either click **Yes, Redirect** or **Close Tab**.
 
-3. **Customizing Redirect Rules**: 
+3. **Bulk URL Handling**: 
+   - If multiple URLs are provided in the `redirects.json` file, they are opened in new tabs in the background. The last URL is loaded in the current tab to ensure smooth single-URL functionality.
+
+4. **Customizing Redirect Rules**: 
    - All redirection rules are stored in a separate `redirects.json` file. This file contains the hash values (URL fragments) and corresponding URLs. You can also specify whether a popup should appear or not.
 
 ---
@@ -45,25 +48,29 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 
 ```
 {
-    "Uhyss": {
-        "url": "https://github.com/TempestAethel/Design-and-implementation-of-Antenna",
+    "SingleRedirect": {
+        "url": "https://example.com/single",
         "showPopup": false
     },
-    "AnotherRedirect": {
-        "url": "https://example.com",
+    "BulkRedirect": {
+        "url": [
+            "https://example.com/first",
+            "https://example.com/second",
+            "https://example.com/third"
+        ],
         "showPopup": true
     }
 }
 ```
 
-- **`<hash>`**: The URL fragment used to trigger the redirection (e.g., `#Uhyss`).
-- **`url`**: The destination URL to redirect to.
+- **`<hash>`**: The URL fragment used to trigger the redirection (e.g., `#SingleRedirect`).
+- **`url`**: The destination URL to redirect to. For bulk redirects, use an array of URLs.
 - **`showPopup`**: Whether to show a popup before redirecting. Set to `true` or `false`.
 
 ### 3. Customize the Look & Feel
 
-- You can modify the **UI** by editing the CSS styles within the `<style>` tag in `index.html`.
-- The default theme is dark-themed, but you can adjust colors, fonts, and other UI elements to fit your needs.
+- Modify the **UI** by editing the CSS styles within the `<style>` tag in `index.html`.
+- Adjust colors, fonts, and other UI elements to fit your needs.
 
 ### 4. Deploy to GitHub Pages
 
@@ -86,10 +93,15 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 - You can configure redirects to show a confirmation dialog before proceeding.
 - This feature is controlled via the `showPopup` field in `redirects.json`. Set it to `true` for redirects that need confirmation.
 
-### Cancel & Undo
+### Bulk URL Handling
 
-- If a user cancels the redirect, a toast message appears informing them that the redirect was canceled.
-- The toast also contains an **Undo** button that, when clicked, brings the user back to the redirect URL to proceed with the redirection.
+- For multiple URLs, the tool opens all URLs in new background tabs.
+- The last URL in the list will load in the current tab.
+
+### Toast Notifications
+
+- Replaces traditional alerts for a smoother user experience.
+- Example: After bulk redirects, a toast message like "All URLs have been opened in new tabs" is displayed.
 
 ---
 
