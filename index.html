@@ -8,7 +8,7 @@
         // Define a mapping of paths to target URLs
         const redirects = {
             'Uhyss': 'https://github.com/TempestAethel/Design-and-implementation-of-Antenna',
-            // Add more mappings as needed
+            // You can add more paths and their target URLs here
             // 'AnotherPath': 'https://example.com',
         };
 
@@ -19,7 +19,7 @@
                 // If a matching redirect is found, perform the redirection
                 window.location.href = redirects[path];
             } else {
-                // If no redirect found, show a message or fallback behavior
+                // If no redirect found, display a message or fallback behavior
                 document.getElementById('message').innerText = `No redirect found for path: ${path}`;
             }
         }
