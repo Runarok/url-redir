@@ -30,6 +30,14 @@
             font-size: 2.5rem;
             color: #ffffff;
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        h1 img {
+            width: 40px; /* Adjust the size of the icon */
+            height: 40px;
+            margin-right: 10px;
         }
 
         .container {
@@ -180,12 +188,21 @@
             }, 3000); // Hide toast after 3 seconds
         }
 
+        // Keyboard shortcut (Ctrl + Shift + A)
+        window.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === 'A') {
+                window.location.hash = '#All'; // Trigger the "All" redirect
+            }
+        });
+
         window.onload = fetchRedirects;
     </script>
 </head>
 <body>
     <div class="container">
-        <h1>API Redirector</h1>
+        <h1>
+            <img src="Url-rdr.png" alt="URL Redirector Icon"> API Redirector
+        </h1>
         <p>This page acts as an API redirector. If the URL hash matches a predefined fragment, you will be redirected.</p>
         <div class="message-container">
             <p id="message">Loading...</p>
