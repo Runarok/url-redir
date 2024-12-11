@@ -1,6 +1,14 @@
 {
+    "All": {
+        "url": "https://runarok.github.io/url-redir/Source.html",
+        "showPopup": false
+    },
     "VITminiproject": {
         "url": "https://github.com/TempestAethel/Design-and-implementation-of-Antenna",
+        "showPopup": false
+    },
+    "Code": {
+        "url": "https://runarok.github.io/GenAI/Misc/Lab/index.html",
         "showPopup": false
     },
     "AnotherRedirect": {
