@@ -31,6 +31,32 @@ A simple and customizable URL redirector that can be hosted on GitHub Pages. Thi
    - All redirection rules are stored in a separate `redirects.json` file. This file contains the hash values (URL fragments) and corresponding URLs. You can also specify whether a popup should appear or not.
 
 ---
+## About `Source.html`
+
+`Source.html` is the core page for the URL Redirector application. It is responsible for fetching the `redirects.json` file, processing the redirection rules, and displaying the content to the user. This page dynamically handles redirections based on the hash provided in the URL, showing confirmation popups when necessary, and opening URLs in new tabs as defined in the configuration.
+
+### How `Source.html` Works
+
+- **Dynamic Redirection**: When a user navigates to a URL with a fragment (`#<hash>`), such as `https://your-site-url.com/#SingleRedirect`, `Source.html` reads the hash and looks for the corresponding redirection rule in the `redirects.json` file.
+  
+- **Popup Confirmation**: If the `showPopup` flag is set to `true` for the selected redirection rule, a confirmation popup will appear, asking the user whether they want to proceed with the redirect.
+
+- **Bulk URL Handling**: If multiple URLs are listed in the `redirects.json` for a given hash, they will be opened in new tabs in the background, with the last one loaded in the current tab.
+
+- **Toast Notifications**: After a successful redirect or a bulk URL opening, a toast message is shown to inform the user about the action.
+
+### Key Features of `Source.html`
+
+- **Responsive and Dark-Themed UI**: The user interface of `Source.html` is designed to be clean, modern, and mobile-friendly with a dark theme, ensuring a smooth user experience.
+- **Integration with `redirects.json`**: All redirection rules and their settings (URLs, popup options) are managed in the `redirects.json` file. This allows for easy configuration and updating of redirect rules without modifying the HTML or JavaScript code directly.
+
+### Customization
+
+- **UI Customization**: You can modify the look and feel of `Source.html` by editing the embedded CSS within the `<style>` tag.
+- **Redirect Rules**: Update the `redirects.json` file to add, remove, or modify redirect rules. Each rule contains the hash fragment, the URL(s) for redirection, and the option to show a confirmation popup.
+
+
+---
 
 ## How to Set Up and Use
 
