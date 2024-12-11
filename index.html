@@ -22,6 +22,7 @@
             align-items: center;
             height: 100vh;
             text-align: center;
+            position: relative;
         }
 
         h1 {
@@ -86,8 +87,48 @@
             font-size: 0.9rem;
             color: #a0a0a0;
         }
+
+        /* Toast Notification Style */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1rem;
+            transition: opacity 0.5s ease;
+        }
+
+        .toast.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .undo-button {
+            background-color: #3b7fb1;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .undo-button:hover {
+            background-color: #3578a3;
+        }
+
     </style>
     <script>
+        let redirectUrl = ''; // Global variable to store the URL for redirect
+        let cancelRedirectUrl = ''; // To store URL before the cancel action
+
         // Fetch the redirect rules from the JSON file
         async function fetchRedirects() {
             const response = await fetch('redirects.json');
@@ -116,23 +157,50 @@
 
         // Function to show the popup
         function showPopup(redirect) {
+            redirectUrl = redirect.url; // Save the redirect URL to the global variable
             const popupMessage = `Do you want to redirect to ${redirect.url}?`;
             const messageContainer = document.querySelector('.message-container');
             messageContainer.innerHTML = `
                 <p>${popupMessage}</p>
-                <button class="popup-button" onclick="redirectUser('${redirect.url}')">Yes, Redirect</button>
+                <button class="popup-button" onclick="redirectUser()">Yes, Redirect</button>
                 <button class="popup-button" onclick="cancelRedirect()">Cancel</button>
             `;
         }
 
         // Perform the redirect action
-        function redirectUser(url) {
-            window.location.href = url;
+        function redirectUser() {
+            if (redirectUrl) {
+                window.location.href = redirectUrl; // Redirect to the saved URL
+            }
         }
 
-        // Cancel the redirect
+        // Cancel the redirect and show the toast notification
         function cancelRedirect() {
+            cancelRedirectUrl = window.location.href; // Save current URL before canceling
             document.getElementById('message').innerText = 'Redirect was canceled.';
+            document.querySelector('.message-container').innerHTML = ''; // Remove the popup
+            showToast(); // Show the cancel toast notification
+        }
+
+        // Show a toast notification when the redirect is canceled
+        function showToast() {
+            const toast = document.createElement('div');
+            toast.classList.add('toast', 'show');
+            toast.innerHTML = `
+                Redirect canceled. <button class="undo-button" onclick="undoCancel()">Undo</button>
+            `;
+            document.body.appendChild(toast);
+
+            // Auto-hide the toast after 5 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                document.body.removeChild(toast);
+            }, 5000);
+        }
+
+        // Undo the cancel and return to the previous redirect place
+        function undoCancel() {
+            window.location.href = cancelRedirectUrl; // Redirect back to the original place
         }
 
         // Call the function to fetch the redirects and process
