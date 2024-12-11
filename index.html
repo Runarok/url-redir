@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Redirector</title>
+    <script>
+        // Simulated API logic to handle redirection
+        function redirectToUrl() {
+            // Get the URL entered by the user
+            const url = document.getElementById("urlInput").value;
+
+            // Check if the URL is not empty
+            if (url && isValidUrl(url)) {
+                // Simulate an API response and redirect the user
+                window.location.href = url;
+            } else {
+                alert("Please enter a valid URL.");
+            }
+        }
+
+        // Basic URL validation
+        function isValidUrl(url) {
+            try {
+                new URL(url); // Try creating a URL object from the string
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        // Check for the 'redirect' query parameter in the URL (e.g., ?redirect=https://example.com)
+        function handleRedirectParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirectUrl = urlParams.get("redirect");
+
+            if (redirectUrl && isValidUrl(redirectUrl)) {
+                window.location.href = redirectUrl;
+            }
+        }
+
+        // Automatically handle the redirect if the page is loaded with a valid 'redirect' query
+        window.onload = handleRedirectParam;
+    </script>
+</head>
+<body>
+    <h1>API Redirector</h1>
+
+    <p>This page acts as an API redirector. Enter a URL and we'll redirect you.</p>
+    
+    <label for="urlInput">Enter a URL to redirect to:</label>
+    <input type="text" id="urlInput" placeholder="Enter a URL (e.g., https://example.com)" />
+    <button onclick="redirectToUrl()">Redirect</button>
+
+    <p>Alternatively, you can pass a URL as a query parameter, like:</p>
+    <pre>?redirect=https://example.com</pre>
+    
+    <p>Hosted on GitHub Pages by <strong>Runarok</strong></p>
+    <p>Repository: <a href="https://github.com/Runarok/url-redir" target="_blank">url-redir</a></p>
+</body>
+</html>
