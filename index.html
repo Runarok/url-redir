@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Redirector</title>
     <script>
-        // Define a mapping of paths to target URLs
+        // Define a mapping of hash fragments to target URLs
         const redirects = {
             'Uhyss': 'https://github.com/TempestAethel/Design-and-implementation-of-Antenna',
-            // You can add more paths and their target URLs here
+            // You can add more hashes and their target URLs here
             // 'AnotherPath': 'https://example.com',
         };
 
-        // Function to handle the redirection based on the URL path
+        // Function to handle the redirection based on the URL hash
         function handleRedirect() {
-            const path = window.location.pathname.split('/').pop(); // Get the last part of the URL path
-            if (redirects[path]) {
+            const hash = window.location.hash.substring(1); // Remove the '#' from the hash
+            if (redirects[hash]) {
                 // If a matching redirect is found, perform the redirection
-                window.location.href = redirects[path];
+                window.location.href = redirects[hash];
             } else {
                 // If no redirect found, display a message or fallback behavior
-                document.getElementById('message').innerText = `No redirect found for path: ${path}`;
+                document.getElementById('message').innerText = `No redirect found for hash: ${hash}`;
             }
         }
 
@@ -31,7 +31,7 @@
 <body>
     <h1>API Redirector</h1>
 
-    <p>This page acts as an API redirector. If the URL matches a predefined path, you will be redirected.</p>
+    <p>This page acts as an API redirector. If the URL hash matches a predefined fragment, you will be redirected.</p>
 
     <p id="message">Loading...</p>
 
