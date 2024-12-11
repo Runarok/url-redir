@@ -61,6 +61,12 @@
             border-radius: 8px;
         }
 
+        #redirects-container {
+            max-height: 400px; /* Set a fixed height for the container */
+            overflow-y: auto;  /* Enable vertical scrolling */
+            padding-right: 10px; /* Add padding on the right side to avoid content being hidden under the scrollbar */
+        }
+
         .footer {
             margin-top: 20px;
             font-size: 0.9rem;
@@ -100,7 +106,7 @@
                 const redirects = await response.json();
                 displayRedirects(redirects);
             } catch (error) {
-                document.getElementById('redirects-container').innerHTML = `
+                document.getElementById('redirects-container').innerHTML = ` 
                     <p style="color: red;">Error loading redirects: ${error.message}</p>
                 `;
             }
