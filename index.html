@@ -5,56 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Redirector</title>
     <script>
-        // Simulated API logic to handle redirection
-        function redirectToUrl() {
-            // Get the URL entered by the user
-            const url = document.getElementById("urlInput").value;
+        // Define a mapping of paths to target URLs
+        const redirects = {
+            'Uhyss': 'https://github.com/TempestAethel/Design-and-implementation-of-Antenna',
+            // Add more mappings as needed
+            // 'AnotherPath': 'https://example.com',
+        };
 
-            // Check if the URL is not empty
-            if (url && isValidUrl(url)) {
-                // Simulate an API response and redirect the user
-                window.location.href = url;
+        // Function to handle the redirection based on the URL path
+        function handleRedirect() {
+            const path = window.location.pathname.split('/').pop(); // Get the last part of the URL path
+            if (redirects[path]) {
+                // If a matching redirect is found, perform the redirection
+                window.location.href = redirects[path];
             } else {
-                alert("Please enter a valid URL.");
+                // If no redirect found, show a message or fallback behavior
+                document.getElementById('message').innerText = `No redirect found for path: ${path}`;
             }
         }
 
-        // Basic URL validation
-        function isValidUrl(url) {
-            try {
-                new URL(url); // Try creating a URL object from the string
-                return true;
-            } catch (e) {
-                return false;
-            }
-        }
-
-        // Check for the 'redirect' query parameter in the URL (e.g., ?redirect=https://example.com)
-        function handleRedirectParam() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const redirectUrl = urlParams.get("redirect");
-
-            if (redirectUrl && isValidUrl(redirectUrl)) {
-                window.location.href = redirectUrl;
-            }
-        }
-
-        // Automatically handle the redirect if the page is loaded with a valid 'redirect' query
-        window.onload = handleRedirectParam;
+        // Call the redirect function when the page loads
+        window.onload = handleRedirect;
     </script>
 </head>
 <body>
     <h1>API Redirector</h1>
 
-    <p>This page acts as an API redirector. Enter a URL and we'll redirect you.</p>
-    
-    <label for="urlInput">Enter a URL to redirect to:</label>
-    <input type="text" id="urlInput" placeholder="Enter a URL (e.g., https://example.com)" />
-    <button onclick="redirectToUrl()">Redirect</button>
+    <p>This page acts as an API redirector. If the URL matches a predefined path, you will be redirected.</p>
 
-    <p>Alternatively, you can pass a URL as a query parameter, like:</p>
-    <pre>?redirect=https://example.com</pre>
-    
+    <p id="message">Loading...</p>
+
     <p>Hosted on GitHub Pages by <strong>Runarok</strong></p>
     <p>Repository: <a href="https://github.com/Runarok/url-redir" target="_blank">url-redir</a></p>
 </body>
