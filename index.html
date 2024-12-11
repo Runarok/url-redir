@@ -31,13 +31,14 @@
             color: #ffffff;
             margin-bottom: 20px;
             display: flex;
-            align-items: center;
+            align-items: center; /* Align image and text vertically */
+            justify-content: center; /* Center the content horizontally */
         }
 
         h1 img {
             width: 40px; /* Adjust the size of the icon */
             height: 40px;
-            margin-right: 10px;
+            margin-right: 10px; /* Add space between image and text */
         }
 
         .container {
@@ -190,7 +191,7 @@
 
         // Keyboard shortcut (Ctrl + Shift + A)
         window.addEventListener('keydown', function(event) {
-            if (event.ctrlKey && event.shiftKey && event.key === 'A') {
+            if (event.shiftKey && event.key === 'A') {
                 window.location.hash = '#All'; // Trigger the "All" redirect
             }
         });
