@@ -4,6 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Redirector</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #f5a623;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #message {
+            font-size: 1.2rem;
+            color: #bbb;
+            margin-top: 30px;
+        }
+
+        /* Button Style for Popup Confirmation */
+        .popup-button {
+            background-color: #f5a623;
+            color: #121212;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-button:hover {
+            background-color: #d48d1a;
+        }
+
+        .message-container {
+            margin-top: 20px;
+        }
+    </style>
     <script>
         // Fetch the redirect rules from the JSON file
         async function fetchRedirects() {
@@ -33,12 +109,23 @@
 
         // Function to show the popup
         function showPopup(redirect) {
-            const userConfirmed = confirm(`Do you want to redirect to ${redirect.url}?`);
-            if (userConfirmed) {
-                window.location.href = redirect.url;
-            } else {
-                document.getElementById('message').innerText = `Redirect to ${redirect.url} was canceled.`;
-            }
+            const popupMessage = `Do you want to redirect to ${redirect.url}?`;
+            const messageContainer = document.querySelector('.message-container');
+            messageContainer.innerHTML = `
+                <p>${popupMessage}</p>
+                <button class="popup-button" onclick="redirectUser('${redirect.url}')">Yes, Redirect</button>
+                <button class="popup-button" onclick="cancelRedirect()">Cancel</button>
+            `;
+        }
+
+        // Perform the redirect action
+        function redirectUser(url) {
+            window.location.href = url;
+        }
+
+        // Cancel the redirect
+        function cancelRedirect() {
+            document.getElementById('message').innerText = 'Redirect was canceled.';
         }
 
         // Call the function to fetch the redirects and process
@@ -46,13 +133,17 @@
     </script>
 </head>
 <body>
-    <h1>API Redirector</h1>
+    <div class="container">
+        <h1>API Redirector</h1>
 
-    <p>This page acts as an API redirector. If the URL hash matches a predefined fragment, you will be redirected.</p>
+        <p>This page acts as an API redirector. If the URL hash matches a predefined fragment, you will be redirected.</p>
 
-    <p id="message">Loading...</p>
+        <div class="message-container">
+            <p id="message">Loading...</p>
+        </div>
 
-    <p>Hosted on GitHub Pages by <strong>Runarok</strong></p>
-    <p>Repository: <a href="https://github.com/Runarok/url-redir" target="_blank">url-redir</a></p>
+        <p>Hosted on GitHub Pages by <strong>Runarok</strong></p>
+        <p>Repository: <a href="https://github.com/Runarok/url-redir" target="_blank">url-redir</a></p>
+    </div>
 </body>
 </html>
