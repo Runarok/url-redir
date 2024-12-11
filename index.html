@@ -54,12 +54,6 @@
             text-decoration: underline;
         }
 
-        #message {
-            font-size: 1.2rem;
-            color: #bbb;
-            margin-top: 30px;
-        }
-
         .popup-button {
             background-color: #4a90e2;
             color: #121212;
@@ -112,7 +106,7 @@
                 if (redirect.showPopup) {
                     showPopup();
                 } else {
-                    redirectInBulk();
+                    openUrlsAndCloseTab();
                 }
             } else {
                 document.getElementById('message').innerText = `No redirect found for hash: ${hash}`;
@@ -126,34 +120,28 @@
                 <p>The following URLs are associated with this hash:</p>
                 <ul>${urlList}</ul>
                 <p>Do you want to proceed?</p>
-                <button class="popup-button" onclick="redirectInBulk()">Yes, Redirect</button>
+                <button class="popup-button" onclick="openUrlsAndCloseTab()">Yes, Open All</button>
                 <button class="popup-button" onclick="closeTab()">Close Tab</button>
             `;
             messageContainer.innerHTML = popupMessage;
         }
 
-        function redirectInBulk() {
-            if (redirectUrls.length > 0) {
-                // Open the first URL in the current tab
-                window.location.href = redirectUrls[0];
-
-                // Open remaining URLs in new tabs
-                for (let i = 1; i < redirectUrls.length; i++) {
-                    openInNewTab(redirectUrls[i]);
+        function openUrlsAndCloseTab() {
+            // Open all URLs in new tabs
+            redirectUrls.forEach(url => {
+                const newTab = window.open(url, '_blank');
+                if (!newTab) {
+                    alert(`Popup blocked for URL: ${url}. Please allow popups for this site.`);
                 }
-            }
-        }
+            });
 
-        function openInNewTab(url) {
-            const newTab = window.open(url, '_blank');
-            if (!newTab) {
-                alert("Browser blocked the popup. Please allow popups for this site.");
-            }
+            // Attempt to close the current tab
+            closeTab();
         }
 
         function closeTab() {
             window.close(); // Attempt to close the current tab
-            alert('If the tab does not close, please close it manually.'); // Backup message if window.close() fails
+            alert('If the tab does not close automatically, please close it manually.'); // Fallback message
         }
 
         window.onload = fetchRedirects;
