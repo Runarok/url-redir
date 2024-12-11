@@ -5,7 +5,7 @@ A simple and customizable URL redirector that can be hosted on GitHub Pages. Thi
 ---
 ## Hosted as GitHub Pages
 
-This project is hosted using [GitHub Pages](https://runarok.github.io/url-redir/), which allows you to serve your project directly from a GitHub repository. Once you push the project to a GitHub repository, you can configure GitHub Pages to make it accessible to anyone via a public URL.
+**This project is hosted using [GitHub Pages](https://runarok.github.io/url-redir/), which allows you to serve your project directly from a GitHub repository. Once you push the project to a GitHub repository, you can configure GitHub Pages to make it accessible to anyone via a public URL.**
 ---
 
 ## Features
