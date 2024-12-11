@@ -100,6 +100,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             font-size: 1rem;
             transition: opacity 0.5s ease;
+            z-index: 1000;
         }
 
         .toast.show {
@@ -174,8 +175,15 @@
 
                 // Open remaining URLs in new tabs
                 for (let i = 1; i < redirectUrls.length; i++) {
-                    window.open(redirectUrls[i], '_blank');
+                    openInNewTab(redirectUrls[i]);
                 }
+            }
+        }
+
+        function openInNewTab(url) {
+            const newTab = window.open(url, '_blank');
+            if (!newTab) {
+                alert("Browser blocked the popup. Please allow popups for this site.");
             }
         }
 
