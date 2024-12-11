@@ -34,16 +34,16 @@ A simple and customizable URL redirector that can be hosted on GitHub Pages. Thi
 ### 1. Clone the Repository
 To set up this redirector on your own GitHub Pages site:
 
-"""
+```
 git clone https://github.com/Runarok/url-redir.git
 cd url-redir
-"""
+```
 
 ### 2. Update `redirects.json`
 
 In the `redirects.json` file, you can add or update redirect rules in the following format:
 
-"""
+```
 {
     "Uhyss": {
         "url": "https://github.com/TempestAethel/Design-and-implementation-of-Antenna",
@@ -54,7 +54,7 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
         "showPopup": true
     }
 }
-"""
+```
 
 - **`<hash>`**: The URL fragment used to trigger the redirection (e.g., `#Uhyss`).
 - **`url`**: The destination URL to redirect to.
