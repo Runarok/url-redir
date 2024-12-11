@@ -1,0 +1,14 @@
+{
+    "Uhyss": {
+        "url": "https://github.com/TempestAethel/Design-and-implementation-of-Antenna",
+        "showPopup": false
+    },
+    "AnotherRedirect": {
+        "url": "https://example.com",
+        "showPopup": true
+    },
+    "ExamplePath": {
+        "url": "https://anotherexample.com",
+        "showPopup": false
+    }
+}
