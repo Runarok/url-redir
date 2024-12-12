@@ -3,12 +3,12 @@
         "url": "https://runarok.github.io/url-redir/Source.html",
         "showPopup": false
     },
-    "VITminiproject": {
-        "url": "https://github.com/TempestAethel/Design-and-implementation-of-Antenna",
-        "showPopup": false
-    },
     "DC": {
         "url": "https://github.com/TempestAethel/Academic/tree/main/College%20Related/5th%20sem/Notes/DC%20LAB/Software",
+        "showPopup": false
+    },
+    "VITminiproject": {
+        "url": "https://github.com/TempestAethel/Design-and-implementation-of-Antenna",
         "showPopup": false
     },
     "Code": {
