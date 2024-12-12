@@ -14,17 +14,6 @@
     "Code": {
         "url": "https://runarok.github.io/GenAI/Misc/Lab/index.html",
         "showPopup": false
-    },
-    "AnotherRedirect": {
-        "url": "https://example.com",
-        "showPopup": true
-    },
-    "ExamplePath": {
-        "url": [
-            "https://example.com/first",
-            "https://example.com/second",
-            "https://example.com/third"
-        ],
-        "showPopup": true
     }
 }
+
