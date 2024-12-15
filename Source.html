@@ -60,6 +60,7 @@
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 8px;
+            position: relative;
         }
 
         #redirects-container {
@@ -92,13 +93,30 @@
         .toast.show {
             display: block;
         }
+
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #78c6e0;
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background-color: #5fa0c7;
+        }
+
     </style>
     <script>
         async function fetchRedirects() {
             try {
                 // Replace with the actual path to your redirects.json file
                 const response = await fetch('redirects.json');
-                
+
                 // If the fetch fails, throw an error
                 if (!response.ok) {
                     throw new Error("Failed to fetch redirects");
@@ -129,10 +147,37 @@
                         <h3>${key}</h3>
                         <p><strong>URLs:</strong> ${urls}</p>
                         <p><strong>Popup:</strong> ${popupStatus}</p>
+                        <button class="copy-btn" onclick="copyToClipboard('${urls}')">Copy URL</button>
                     </div>
                 `;
                 container.innerHTML += redirectHtml;
             }
+        }
+
+        function copyToClipboard(url) {
+            // Create a temporary textarea element to copy the text
+            const textarea = document.createElement('textarea');
+            textarea.value = url;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            // Show a toast notification
+            showToast('URL copied to clipboard!');
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast show';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // Hide the toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                document.body.removeChild(toast);
+            }, 3000);
         }
 
         // Fetch redirects when the page loads
