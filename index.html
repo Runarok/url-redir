@@ -123,8 +123,14 @@
         // Convert the hash to lowercase before checking
         const hash = window.location.hash.substring(1).toLowerCase();
 
-        if (redirects[hash]) {
-            const redirect = redirects[hash];
+        // Convert all keys in redirects to lowercase
+        const normalizedRedirects = Object.keys(redirects).reduce((acc, key) => {
+            acc[key.toLowerCase()] = redirects[key];
+            return acc;
+        }, {});
+
+        if (normalizedRedirects[hash]) {
+            const redirect = normalizedRedirects[hash];
 
             // Support bulk URLs
             if (Array.isArray(redirect.url)) {
@@ -199,6 +205,7 @@
 
     window.onload = fetchRedirects;
 </script>
+
 
 </head>
 <body>
