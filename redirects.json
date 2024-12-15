@@ -1,17 +1,17 @@
 {
-    "All": {
+    "all": {
         "url": "https://runarok.github.io/url-redir/Source.html",
         "showPopup": false
     },
-    "DC": {
+    "dc": {
         "url": "https://github.com/TempestAethel/Academic/tree/main/College%20Related/5th%20sem/Notes/DC%20LAB/Software",
         "showPopup": false
     },
-    "VITminiproject": {
+    "vitminiproject": {
         "url": "https://github.com/TempestAethel/Design-and-implementation-of-Antenna",
         "showPopup": false
     },
-    "Code": {
+    "code": {
         "url": "https://runarok.github.io/GenAI/Misc/Lab/index.html",
         "showPopup": false
     },
@@ -19,7 +19,7 @@
         "url": "https://github.com/TempestAethel/Academic/blob/main/College%20Related/5th%20sem/Technology%20Innovation%20And%20Management%20Entrepreneurship/Test/IA%202.md",
         "showPopup": false
     },
-    "Rm": {
+    "rm": {
         "url": "https://github.com/TempestAethel/Academic/blob/main/College%20Related/5th%20sem/Research%20Methodology%20and%20Intellectual%20property%20rights/Test/IA%202.md",
         "showPopup": false
     },
