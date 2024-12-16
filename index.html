@@ -147,12 +147,15 @@
                 const urls = isArray ? redirect.url.join(', ') : redirect.url;
                 const popupStatus = redirect.showPopup ? 'Yes' : 'No';
 
+                // Capitalize the first letter of the key and display
+                const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();
+
                 // Truncate long URLs and add tooltip for full URL
                 const truncatedUrls = urls.length > 50 ? `${urls.substring(0, 50)}...` : urls;
 
                 const redirectHtml = `
-                    <div class="redirect-item" title="Click to copy URL for ${key}" onclick="copyToClipboard('${urls}')">
-                        <h3>${key}</h3>
+                    <div class="redirect-item" title="Click to copy URL for ${capitalizedKey}" onclick="copyToClipboard('${urls}')">
+                        <h3>${capitalizedKey}</h3>
                         <p>
                             <strong>URLs:</strong>
                             <span title="${urls}">${truncatedUrls}</span>
