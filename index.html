@@ -61,6 +61,12 @@
             margin-bottom: 15px;
             border-radius: 8px;
             position: relative;
+            cursor: pointer; /* Make the whole item clickable */
+            transition: background-color 0.3s ease; /* Add hover effect */
+        }
+
+        .redirect-item:hover {
+            background-color: #5f6975; /* Darker background on hover */
         }
 
         #redirects-container {
@@ -94,22 +100,6 @@
             display: block;
         }
 
-        .copy-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: #78c6e0;
-            border: none;
-            padding: 5px 10px;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .copy-btn:hover {
-            background-color: #5fa0c7;
-        }
-
         /* Handle long URLs */
         .redirect-item p {
             word-wrap: break-word; /* Break long words or URLs */
@@ -118,6 +108,12 @@
             text-overflow: ellipsis; /* Add ellipsis for overflow */
             max-width: 100%; /* Ensure it doesn't overflow */
             word-break: break-word; /* Ensures that the URL breaks into multiple lines if needed */
+        }
+
+        .redirect-item h3 {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 10px;
         }
     </style>
     <script>
@@ -155,14 +151,13 @@
                 const truncatedUrls = urls.length > 50 ? `${urls.substring(0, 50)}...` : urls;
 
                 const redirectHtml = `
-                    <div class="redirect-item">
+                    <div class="redirect-item" title="Click to copy URL for ${key}" onclick="copyToClipboard('${urls}')">
                         <h3>${key}</h3>
                         <p>
                             <strong>URLs:</strong>
                             <span title="${urls}">${truncatedUrls}</span>
                         </p>
                         <p><strong>Popup:</strong> ${popupStatus}</p>
-                        <button class="copy-btn" onclick="copyToClipboard('${urls}')">Copy URL</button>
                     </div>
                 `;
                 container.innerHTML += redirectHtml;
