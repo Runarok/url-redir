@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -153,7 +154,7 @@
                 const truncatedUrls = urls.length > 50 ? `${urls.substring(0, 50)}...` : urls;
 
                 const redirectHtml = `
-                    <div class="redirect-item" title="Click to copy URL for ${capitalizedKey}" onclick="copyToClipboard('${urls}')">
+                    <div class="redirect-item" data-hash="${key}" title="Click to copy URL for ${capitalizedKey}" onclick="copyToClipboard(this)">
                         <h3>${capitalizedKey}</h3>
                         <p>
                             <strong>URLs:</strong>
@@ -166,7 +167,10 @@
             }
         }
 
-        function copyToClipboard(url) {
+        function copyToClipboard(element) {
+            const hash = element.getAttribute('data-hash');
+            const url = `https://runarok.github.io/url-redir/#${hash}`;
+            
             // Create a temporary textarea element to copy the text
             const textarea = document.createElement('textarea');
             textarea.value = url;
@@ -176,7 +180,7 @@
             document.body.removeChild(textarea);
 
             // Show a toast notification
-            showToast('URL copied to clipboard!');
+            showToast(`URL copied: ${url}`);
         }
 
         function showToast(message) {
