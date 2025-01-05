@@ -2,7 +2,6 @@
 
 A simple and customizable URL redirector that can be hosted on GitHub Pages. This tool reads redirection rules from a JSON file, allowing you to redirect users based on URL fragments (hashes). You can also configure the redirects to display a confirmation popup, providing users with the option to proceed or cancel the redirect.
 
----
 ## Hosted as GitHub Pages
 
 This project is hosted using [GitHub Pages](https://runarok.github.io/url-redir/) which allows you to serve your project directly from a GitHub repository. Once you push the project to a GitHub repository, you can configure GitHub Pages to make it accessible to anyone via a public URL.
@@ -36,13 +35,14 @@ This project is hosted using [GitHub Pages](https://runarok.github.io/url-redir/
    - All redirection rules are stored in a separate `redirects.json` file. This file contains the hash values (URL fragments) and corresponding URLs. You can also specify whether a popup should appear or not.
 
 ---
-## About `Source.html`
 
-`Source.html` is the core page for the URL Redirector application. It is responsible for fetching the `redirects.json` file, processing the redirection rules, and displaying the content to the user. This page dynamically handles redirections based on the hash provided in the URL, showing confirmation popups when necessary, and opening URLs in new tabs as defined in the configuration.
+## About `index.html`
 
-### How `Source.html` Works
+`index.html` is the core page for the URL Redirector application. It is responsible for fetching the `redirects.json` file, processing the redirection rules, and displaying the content to the user. This page dynamically handles redirections based on the hash provided in the URL, showing confirmation popups when necessary, and opening URLs in new tabs as defined in the configuration.
 
-- **Dynamic Redirection**: When a user navigates to a URL with a fragment (`#<hash>`), such as `https://your-site-url.com/#SingleRedirect`, `Source.html` reads the hash and looks for the corresponding redirection rule in the `redirects.json` file.
+### How `index.html` Works
+
+- **Dynamic Redirection**: When a user navigates to a URL with a fragment (`#<hash>`), such as `https://your-site-url.com/#SingleRedirect`, `index.html` reads the hash and looks for the corresponding redirection rule in the `redirects.json` file.
   
 - **Popup Confirmation**: If the `showPopup` flag is set to `true` for the selected redirection rule, a confirmation popup will appear, asking the user whether they want to proceed with the redirect.
 
@@ -50,16 +50,30 @@ This project is hosted using [GitHub Pages](https://runarok.github.io/url-redir/
 
 - **Toast Notifications**: After a successful redirect or a bulk URL opening, a toast message is shown to inform the user about the action.
 
-### Key Features of `Source.html`
+---
 
-- **Responsive and Dark-Themed UI**: The user interface of `Source.html` is designed to be clean, modern, and mobile-friendly with a dark theme, ensuring a smooth user experience.
-- **Integration with `redirects.json`**: All redirection rules and their settings (URLs, popup options) are managed in the `redirects.json` file. This allows for easy configuration and updating of redirect rules without modifying the HTML or JavaScript code directly.
+## Project Structure
 
-### Customization
+The project has been split into separate files for better maintainability and customization:
 
-- **UI Customization**: You can modify the look and feel of `Source.html` by editing the embedded CSS within the `<style>` tag.
-- **Redirect Rules**: Update the `redirects.json` file to add, remove, or modify redirect rules. Each rule contains the hash fragment, the URL(s) for redirection, and the option to show a confirmation popup.
+<pre>
+/url-redir
+│
+├── /assets
+│   ├── style.css        # CSS for styling the page
+│   ├── script.js        # JavaScript for handling redirection and logic
+│
+├── index.html           # HTML that loads the application
+├── redirects.json       # JSON file containing the redirect rules
+└── README.md            # This documentation
+</pre>
 
+### Key Changes in Structure:
+
+- `index.html`: The main HTML file that loads the content and triggers the JavaScript to handle the redirection logic.
+- `style.css`: Contains all the styles for the app, including the dark theme and responsive layout.
+- `script.js`: This JavaScript file handles the core logic for reading the `redirects.json`, managing the redirection, and displaying the confirmation popups and toast notifications.
+- `redirects.json`: The file where you configure all the redirection rules (hashes and their corresponding URLs).
 
 ---
 
@@ -68,16 +82,16 @@ This project is hosted using [GitHub Pages](https://runarok.github.io/url-redir/
 ### 1. Clone the Repository
 To set up this redirector on your own GitHub Pages site:
 
-```
+<pre>
 git clone https://github.com/Runarok/url-redir.git
 cd url-redir
-```
+</pre>
 
 ### 2. Update `redirects.json`
 
 In the `redirects.json` file, you can add or update redirect rules in the following format:
 
-```
+<pre>
 {
     "SingleRedirect": {
         "url": "https://example.com/single",
@@ -92,7 +106,7 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
         "showPopup": true
     }
 }
-```
+</pre>
 
 - **`<hash>`**: The URL fragment used to trigger the redirection (e.g., `#SingleRedirect`).
 - **`url`**: The destination URL to redirect to. For bulk redirects, use an array of URLs.
@@ -100,7 +114,7 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 
 ### 3. Customize the Look & Feel
 
-- Modify the **UI** by editing the CSS styles within the `<style>` tag in `index.html`.
+- Modify the **UI** by editing the `style.css` file.
 - Adjust colors, fonts, and other UI elements to fit your needs.
 
 ### 4. Deploy to GitHub Pages
