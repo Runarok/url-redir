@@ -36,22 +36,6 @@ This project is hosted using [GitHub Pages](https://runarok.github.io/url-redir/
 
 ---
 
-## About `index.html`
-
-`index.html` is the core page for the URL Redirector application. It is responsible for fetching the `redirects.json` file, processing the redirection rules, and displaying the content to the user. This page dynamically handles redirections based on the hash provided in the URL, showing confirmation popups when necessary, and opening URLs in new tabs as defined in the configuration.
-
-### How `index.html` Works
-
-- **Dynamic Redirection**: When a user navigates to a URL with a fragment (`#<hash>`), such as `https://your-site-url.com/#SingleRedirect`, `index.html` reads the hash and looks for the corresponding redirection rule in the `redirects.json` file.
-  
-- **Popup Confirmation**: If the `showPopup` flag is set to `true` for the selected redirection rule, a confirmation popup will appear, asking the user whether they want to proceed with the redirect.
-
-- **Bulk URL Handling**: If multiple URLs are listed in the `redirects.json` for a given hash, they will be opened in new tabs in the background, with the last one loaded in the current tab.
-
-- **Toast Notifications**: After a successful redirect or a bulk URL opening, a toast message is shown to inform the user about the action.
-
----
-
 ## Project Structure
 
 The project has been split into separate files for better maintainability and customization:
@@ -59,20 +43,29 @@ The project has been split into separate files for better maintainability and cu
 <pre>
 /url-redir
 │
-├── /assets
-│   ├── style.css        # CSS for styling the page
-│   ├── script.js        # JavaScript for handling redirection and logic
+├── /css
+│   ├── Main.css            # Main CSS for styling the page
+│   ├── Source.css          # Additional CSS specific to the Source.html
 │
-├── index.html           # HTML that loads the application
-├── redirects.json       # JSON file containing the redirect rules
-└── README.md            # This documentation
+├── /js
+│   ├── Main.js             # JavaScript for handling redirection and its logic
+│   ├── Source.js           # JavaScript for Source.html logic   
+│
+├── index.html              # HTML that loads the application
+├── redirects.json          # JSON file containing the redirect rules
+├── Source.html             # Alternative HTML that shows all present hash links
+├── Url-rdr.png             # Image for branding or documentation
+└── README.md               # This documentation
 </pre>
 
 ### Key Changes in Structure:
 
 - `index.html`: The main HTML file that loads the content and triggers the JavaScript to handle the redirection logic.
-- `style.css`: Contains all the styles for the app, including the dark theme and responsive layout.
-- `script.js`: This JavaScript file handles the core logic for reading the `redirects.json`, managing the redirection, and displaying the confirmation popups and toast notifications.
+- `Source.html`: An alternative HTML page that lists all present hash links.
+- `Main.css`: The primary CSS file for the app, including the dark theme and responsive design.
+- `Source.css`: Additional CSS for managing the presentation of the redirector logic.
+- `Main.js`: The main JavaScript file responsible for handling redirection, fetching `redirects.json`, and displaying notifications.
+- `Source.js`: The JavaScript file handling redirection actions and popup logic.
 - `redirects.json`: The file where you configure all the redirection rules (hashes and their corresponding URLs).
 
 ---
@@ -114,10 +107,15 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 
 ### 3. Customize the Look & Feel
 
-- Modify the **UI** by editing the `style.css` file.
+- Modify the **UI** by editing the `Main.css` and `Source.css` files.
 - Adjust colors, fonts, and other UI elements to fit your needs.
 
-### 4. Deploy to GitHub Pages
+### 4. Customize the Logic
+
+- The **Main.js** file contains the primary redirection logic, including handling the URL fragment and showing toast notifications.
+- The **Source.js** file manages the popup logic and URL opening in background tabs.
+
+### 5. Deploy to GitHub Pages
 
 1. Create a repository on GitHub, and push the `url-redir` folder to it.
 2. In the GitHub repository, go to **Settings** > **Pages**.
