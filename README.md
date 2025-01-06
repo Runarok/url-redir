@@ -58,15 +58,20 @@ The project has been split into separate files for better maintainability and cu
 └── README.md               # This documentation
 </pre>
 
-### Key Changes in Structure:
+### Structure:
 
-- `index.html`: The main HTML file that loads the content and triggers the JavaScript to handle the redirection logic.
-- `Source.html`: An alternative HTML page that lists all present hash links.
-- `Main.css`: The primary CSS file for the app, including the dark theme and responsive design.
-- `Source.css`: Additional CSS for managing the presentation of the redirector logic.
-- `Main.js`: The main JavaScript file responsible for handling redirection, fetching `redirects.json`, and displaying notifications.
-- `Source.js`: The JavaScript file handling redirection actions and popup logic.
-- `redirects.json`: The file where you configure all the redirection rules (hashes and their corresponding URLs).
+Runarok-url-redir/
+├── README.md                   # Project documentation
+├── LICENSE                      # MIT License for the project
+├── index.html                   # The main HTML file that loads the content and triggers the JavaScript to handle the redirection logic
+├── Source.html                  # An alternative HTML page that lists all present hash links.
+├── redirects.json               # The file where you configure all the redirection hashes and their corresponding URLs.
+├── css/
+│   ├── Main.css                 # The primary CSS file for the app, including the dark theme and responsive design
+│   └── Source.css               # CSS for managing the presentation of the Source.html.
+└── js/
+    ├── Main.js                  # The main JavaScript file responsible for handling redirection, fetching redirects.json, and displaying notifications
+    └── Source.js                # js for managing the presentation of the Source.html.
 
 ---
 
