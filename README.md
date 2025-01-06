@@ -119,7 +119,7 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 
 1. Create a repository on GitHub, and push the `url-redir` folder to it.
 2. In the GitHub repository, go to **Settings** > **Pages**.
-3. Set the **Source** to the branch (usually `main` or `master`) and the folder to `/root` (if it's the main project folder).
+3. Set the **Source** to the branch `main` and the folder to `/root`.
 4. Your site will be live at `https://<your-username>.github.io/<your-repo-name>`.
 
 ---
@@ -148,14 +148,8 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 
 ---
 
-## Contribution Guidelines
-
-1. Fork this repository.
-2. Create a feature branch (`git checkout -b feature/your-feature`).
-3. Make changes and add tests if applicable.
-4. Commit your changes (`git commit -m 'Add some feature'`).
-5. Push to the branch (`git push origin feature/your-feature`).
-6. Open a pull request and describe your changes.
+> **Note:**  
+I will not be updating this repository. I will only modify the `redirect.json` file for my personal use. Feel free to use the repository as you need!
 
 ---
 
