@@ -1,28 +1,26 @@
 {
-    "vitminiproject": {
-        "url": "https://github.com/TempestAethel/Design-and-implementation-of-Antenna",
+    "SingleRedirectWithoutPopup": {
+        "url": "https://example.com/single",
+        "showPopup": false
+    }, 
+    "SingleRedirectWithPopup": {
+        "url": "https://example.com/single",
         "showPopup": false
     },
-    "time": {
-        "url": "https://github.com/TempestAethel/Academic/blob/main/College%20Related/5th%20sem/Technology%20Innovation%20And%20Management%20Entrepreneurship/Test/IA%202.md",
+    "BulkRedirectWithoutPopup": {
+        "url": [
+            "https://example.com/first",
+            "https://example.com/second",
+            "https://example.com/third"
+        ],
         "showPopup": false
     },
-    "rm": {
-        "url": "https://github.com/TempestAethel/Academic/blob/main/College%20Related/5th%20sem/Research%20Methodology%20and%20Intellectual%20property%20rights/Test/IA%202.md",
-        "showPopup": false
-    },
-    "imla": {
-        "url": ["https://github.com/TempestAethel/Academic/blob/main/College%20Related/5th%20sem/Intelligent%20Systems%20and%20Machine%20Learning%20Algorithms/EXAMs/IMLA%20Mod%203%20IA%202.md",
-                "https://github.com/TempestAethel/Academic/blob/main/College%20Related/5th%20sem/Intelligent%20Systems%20and%20Machine%20Learning%20Algorithms/EXAMs/IMLA%20Mod%204%20IA%202.md",
-                "https://github.com/TempestAethel/Academic/blob/main/College%20Related/5th%20sem/Intelligent%20Systems%20and%20Machine%20Learning%20Algorithms/EXAMs/IMLA%20Mod%205%20IA%202.md"],
-        "showPopup": false
-    },
-    "GitHub": {
-        "url": ["https://onecompiler.com/html/",
-                "https://chatgpt.com/",
-                "https://tempestaethel.github.io/TempestAethel/",
-                "https://runarok.github.io/Runarok/"],
-        "showPopup": false
+    "BulkRedirectWithPopup": {
+        "url": [
+            "https://example.com/first",
+            "https://example.com/second",
+            "https://example.com/third"
+        ],
+        "showPopup": true
     }
 }
-
