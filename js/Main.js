@@ -85,8 +85,8 @@ function showToast(message) {
 
 // Keyboard shortcut (Ctrl + Shift + A)
 window.addEventListener('keydown', function(event) {
-    if (event.shiftKey && event.key === 'A') {
-        window.location.hash = '#All'; // Trigger the "All" redirect
+    if (event.ctrlKey && event.shiftKey && event.key === 'A') {
+        window.location.href = 'Source.html'; // Redirect to Source.html
     }
 });
 
