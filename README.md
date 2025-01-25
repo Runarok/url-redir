@@ -51,6 +51,7 @@ The project has been split into separate files for better maintainability and cu
 │   ├── Main.js             # JavaScript for handling redirection and its logic
 │   ├── Source.js           # JavaScript for Source.html logic   
 │
+├── Code_Appendix.md        # Documentation of Generalized Main HTMLs
 ├── index.html              # HTML that loads the application
 ├── redirects.json          # JSON file containing the redirect rules
 ├── Source.html             # Alternative HTML that shows all present hash links
