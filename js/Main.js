@@ -83,9 +83,9 @@ function showToast(message) {
     }, 3000); // Hide toast after 3 seconds
 }
 
-// Keyboard shortcut (Ctrl + Shift + A)
+// Keyboard shortcut (Shift + A)
 window.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && event.shiftKey && event.key === 'A') {
+    if (event.shiftKey && event.key === 'A') {
         window.location.href = 'Source.html'; // Redirect to Source.html
     }
 });
