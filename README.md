@@ -60,6 +60,17 @@ The project has been split into separate files for better maintainability and cu
 
 ---
 
+# Code Appendix
+
+This file contains two **single HTML files**:
+
+1. **Redirecting HTML File**: A simple HTML file that redirects users to a specified URL after a set time.
+2. **Redirect Showcase HTML File**: A self-contained HTML file that demonstrates various redirect types and showcases how they can be used.
+
+Each file is self-contained with embedded **CSS** and **JavaScript**, making them easy to use and share without needing multiple resources.Also add `redirects.json` as per need.
+
+---
+
 ## How to Set Up and Use
 
 ### 1. Clone the Repository
@@ -139,7 +150,8 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 ---
 
 > **Note:**  
-I will not be updating this repository. I will only modify the `redirect.json` file for my personal use. Feel free to use the repository as you need!
+> I have linked my redirects URL to [this file](https://raw.githubusercontent.com/Runarok/Guides/refs/heads/main/url-redir/redirects.json), which is in another repository. Since I will be archiving this repository, I will continue to use this file as needed.  
+> I will not be updating this repository. I will only modify the `redirect.json` file for my personal use. Feel free to use the repository as you need!
 
 ---
 
