@@ -161,14 +161,3 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-## Acknowledgements
-
-- This project was created with care and love by **Runarok**.
-- Hosted on GitHub Pages with ❤️.
-
----
-
-## Contact
-
-For any questions, feel free to open an issue on the [GitHub repository](https://github.com/Runarok/url-redir).
