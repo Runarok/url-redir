@@ -1,0 +1,26 @@
+{
+    "SingleRedirectWithoutPopup": {
+        "url": "https://example.com/single",
+        "showPopup": false
+    }, 
+    "SingleRedirectWithPopup": {
+        "url": "https://example.com/single",
+        "showPopup": false
+    },
+    "BulkRedirectWithoutPopup": {
+        "url": [
+            "https://example.com/first",
+            "https://example.com/second",
+            "https://example.com/third"
+        ],
+        "showPopup": false
+    },
+    "BulkRedirectWithPopup": {
+        "url": [
+            "https://example.com/first",
+            "https://example.com/second",
+            "https://example.com/third"
+        ],
+        "showPopup": true
+    }
+}
