@@ -151,7 +151,7 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 ---
 
 > **Note:**  
-> I have linked my redirects URL to [this file](https://raw.githubusercontent.com/Runarok/Guides/refs/heads/main/url-redir/redirects.json), which is in another repository. Since I will be archiving this repository, I will continue to use this file as needed.  
+> I have linked my redirects URL to [this file](https://raw.githubusercontent.com/Runarok/Guides/refs/heads/main/Code%20Reference/url-redir/redirects.json), which is in another repository. Since I will be archiving this repository, I will continue to use this file as needed.  
 > I will not be updating this repository. I will only modify the `redirect.json` file for my personal use. Feel free to use the repository as you need!
 
 ---
