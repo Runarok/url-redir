@@ -1,7 +1,7 @@
 async function fetchRedirects() {
     try {
         // Use the raw GitHub URL for redirects.json
-        const response = await fetch('https://raw.githubusercontent.com/Runarok/Guides/refs/heads/main/Code%20Reference/url-redir/redirects.json');
+        const response = await fetch('https://raw.githubusercontent.com/Runarok/Guides/refs/heads/main/Code%20Reference/url-redir/redirects.json?token=GHSAT0AAAAAAC6H6NSAR5FOMSMZ2GUXZIR22A2QRAA');
 
         // If the fetch fails, throw an error
         if (!response.ok) {
