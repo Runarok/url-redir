@@ -1,7 +1,7 @@
 let redirectUrls = []; // Stores URLs for the current hash
 
 async function fetchRedirects() {
-    const response = await fetch('https://raw.githubusercontent.com/Runarok/Guides/refs/heads/main/Code%20Reference/url-redir/redirects.json');
+    const response = await fetch('https://raw.githubusercontent.com/Runarok/Guides/refs/heads/main/Code%20Reference/url-redir/redirects.json?token=GHSAT0AAAAAAC6H6NSAR5FOMSMZ2GUXZIR22A2QRAA');
     const redirects = await response.json();
     handleRedirect(redirects);
 }
