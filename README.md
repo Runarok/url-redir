@@ -40,24 +40,36 @@ This project is hosted using [GitHub Pages](https://runarok.github.io/url-redir/
 
 The project has been split into separate files for better maintainability and customization:
 
-<pre>
+<pre> 
 /url-redir
 │
-├── /css
-│   ├── Main.css            # Main CSS for styling the page
-│   ├── Source.css          # Additional CSS specific to the Source.html
+├── README.md
+│   # Project documentation
+├── LICENSE
+│   # MIT License file
+├── index.html
+│   # Main HTML entry point
 │
-├── /js
-│   ├── Main.js             # JavaScript for handling redirection and its logic
-│   ├── Source.js           # JavaScript for Source.html logic   
+├── /assets
+│   ├── Code_Appendix.md
+│   │   # Documentation of generalized HTML files
+│   ├── redirects.json
+│   │   # JSON file containing redirect rules
+│   └── Url-rdr.png
+│       # Branding or documentation image
 │
-├── Code_Appendix.md        # Documentation of Generalized Main HTMLs
-├── index.html              # HTML that loads the application
-├── redirects.json          # JSON file containing the redirect rules
-├── Source.html             # Alternative HTML that shows all present hash links
-├── Url-rdr.png             # Image for branding or documentation
-└── README.md               # This documentation
-</pre>
+└── /connects
+    ├── scripts.js
+    │   # Main redirection logic
+    ├── styles.css
+    │   # Main application styling
+    └── /sources
+        ├── index.html
+        │   # Source listing page
+        ├── scripts.js
+        │   # Logic for source page
+        └── styles.css
+            # Styling for source page
 
 ---
 
