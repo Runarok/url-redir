@@ -70,7 +70,8 @@ The project has been split into separate files for better maintainability and cu
         │   # Logic for source page
         └── styles.css
             # Styling for source page
-
+</pre>
+   
 ---
 
 # Code Appendix
@@ -164,6 +165,7 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 
 > **Note:**  
 > I have linked my redirects URL to [this file](https://raw.githubusercontent.com/Runarok/Guides/refs/heads/main/Code%20Reference/url-redir/redirects.json), which is in another repository. Since I will be archiving this repository, I will continue to use this file as needed.  
+> To edit the JSON file, simply modify it here: [Guides/url-redir/redirects.json](https://github.com/Runarok/Guides/blob/main/Code%20Reference/url-redir/redirects.json)
 > I will not be updating this repository. I will only modify the `redirect.json` file for my personal use. Feel free to use the repository as you need!
 
 ---
@@ -173,3 +175,5 @@ In the `redirects.json` file, you can add or update redirect rules in the follow
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+
+
